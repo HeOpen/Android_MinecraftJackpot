@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:paddingTop="50sp"
+        android:id="@+id/tvPulsaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Has pulsado 0 veces"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/tvPuntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Tu puntuación es de: 0 puntos"
+        android:layout_gravity="center" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="30dp">
+
+        <ImageView
+            android:id="@+id/imgMineral1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/diamond" />
+
+        <ImageView
+            android:id="@+id/imgMineral2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/emerald" />
+
+        <ImageView
+            android:id="@+id/imgMineral3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/gold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnJugar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#74008300"
+        android:text="Jugar"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/btnParar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#67FF0000"
+        android:text="Parar" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 Iguales = 3 puntos\n3 Iguales = 10 puntos"
+        android:textAlignment="center"
+        />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1.5" />
+
+</LinearLayout>

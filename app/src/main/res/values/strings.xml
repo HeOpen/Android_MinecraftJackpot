@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JackpotMachine</string>
+
+    <plurals name="contador_pulsaciones">
+        <item quantity="one">Has pulsado %d vez</item>
+        <item quantity="other">Has pulsado %d veces</item>
+    </plurals>
+
+    <plurals name="contador_puntuacion">
+        <item quantity="one">Tu puntuación es de: %d punto.</item>
+        <item quantity="other">Tu puntuación es de: %d puntos.</item>
+    </plurals>
+</resources>

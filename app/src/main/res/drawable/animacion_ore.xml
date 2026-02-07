@@ -1,0 +1,14 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/amethyst" android:duration="100" />
+    <item android:drawable="@drawable/coal" android:duration="100" />
+    <item android:drawable="@drawable/copper" android:duration="100" />
+    <item android:drawable="@drawable/diamond" android:duration="100" />
+    <item android:drawable="@drawable/emerald" android:duration="100" />
+    <item android:drawable="@drawable/glowstone" android:duration="100" />
+    <item android:drawable="@drawable/gold" android:duration="100" />
+    <item android:drawable="@drawable/iron" android:duration="100" />
+    <item android:drawable="@drawable/lapis_lazuli" android:duration="100" />
+    <item android:drawable="@drawable/quartz" android:duration="100" />
+    <item android:drawable="@drawable/redstone" android:duration="100" />
+    <item android:drawable="@drawable/ender_pearl" android:duration="100" />
+</animation-list>

@@ -1,7 +1,9 @@
 package com.example.jackpotmachine;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView img1, img2, img3;
     private AnimationDrawable anim1, anim2, anim3;
 
+    private MediaPlayer mpFondo;
+    private MediaPlayer mpGiro;
+
     private final int[] oresMinecraft = {
             R.drawable.amethyst, R.drawable.coal, R.drawable.copper,
             R.drawable.diamond, R.drawable.emerald, R.drawable.glowstone,
@@ -33,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        //Musica
+        mpFondo = MediaPlayer.create(this, R.raw.kasino_cantgetover);
+        mpFondo.setLooping(true);
+        mpFondo.start();
+
+        mpGiro = MediaPlayer.create(this, R.raw.case_opening);
+        mpGiro.setLooping(true);
 
         // Initialize Views
         tvPulsaciones = findViewById(R.id.tvPulsaciones);
@@ -47,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
         generarOresAleatorios();
 
         btnJugar.setOnClickListener(v -> {
+            //Sonido de la ruleta
+            if (!mpGiro.isPlaying()) {
+                mpGiro.start();
+            }
             pulsaciones++;
             actualizarTextoPulsaciones();
 
@@ -65,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnParar.setOnClickListener(v -> {
+            if (mpGiro.isPlaying()) {
+                mpGiro.pause();
+                mpGiro.seekTo(0);
+            }
             // Stop animations if they are running
             if (anim1 != null) {
                 anim1.stop();
@@ -93,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         img2.setImageResource(idOre2);
         img3.setImageResource(idOre3);
     }
+
     private void procesarResultadoPuntos() {
         // Rule: 3 equal = 10 points; 2 equal = 3 points
         if (idOre1 == idOre2 && idOre2 == idOre3) {
@@ -112,5 +134,33 @@ public class MainActivity extends AppCompatActivity {
     private void actualizarTextoPuntuacion() {
         String texto = getResources().getQuantityString(R.plurals.contador_puntuacion, puntuacion, puntuacion);
         tvPuntuacion.setText(texto);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mpFondo != null && mpFondo.isPlaying()) mpFondo.pause();
+        if (mpGiro != null && mpGiro.isPlaying()) mpGiro.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mpFondo != null) mpFondo.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Liberar memoria
+        if (mpFondo != null) {
+            mpFondo.release();
+            mpFondo = null;
+        }
+        if (mpGiro != null) {
+            mpGiro.release();
+            mpGiro = null;
+        }
+
     }
 }
